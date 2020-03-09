@@ -46,12 +46,14 @@ namespace BreadthFirst
                 this.root = root;
                 this.BFSQ.Enqueue(root.city);
             }
-
+            public boolean isExist(Node q);
             Queue<Node> BFSQ = new Queue<Node>();
-
             public void checkInfection()
             {
-                
+                while(BFSQ.Count > 0){
+                    Node current = BFSQ.Peek();
+                    i = current.NodesLi
+                }
             }
 
         }
