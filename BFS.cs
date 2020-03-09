@@ -40,19 +40,32 @@ namespace BreadthFirst
         }
         public class BFSAlgorithm
         {
-            public BFSAlgorithm(int time, Infection root) //default constructor
+            public BFSAlgorithm(int time, Node root) //default constructor
             {
                 this.timeLimit = time;
                 this.root = root;
-                this.BFSQ.Enqueue(root.city);
+                this.BFSQ.Enqueue(root);
             }
-            public boolean isExist(Node q);
-            Queue<Node> BFSQ = new Queue<Node>();
+            public boolean isExist(Node q) //if q exist in queue
+            {
+
+            }
+            Queue<Node> BFSQ = new Queue<Node>(); //bfs queue
+            public boolean isInfected(Node parent, Node child);
             public void checkInfection()
             {
                 while(BFSQ.Count > 0){
                     Node current = BFSQ.Peek();
-                    i = current.NodesLi
+                    foreach (Link child in current.NodesList)
+                    {
+                        if(isInfected(current,child)){
+                            //masukin ke list infected
+                            if(!isExist(child)){
+                                BFSQ.Enqueue(child);
+                            }
+                        }
+                        BFSQ.Dequeue();
+                    }
                 }
             }
 
