@@ -8,34 +8,14 @@ namespace BreadthFirst
 {
     class Program
     {
-        public class Infection
+        public class Infected
         {
-            public Infection(Node city) //constructor
-            {
+            public int time;
+            public Node city;
+
+            public Infected(int time, Node city){
+                this.time = time;
                 this.city = city;
-                this.timeInfected = 0;
-            }
-
-            public List<Infection> Infected //Kota-kota yang terinfeksi
-            {
-                get
-                {
-                    return InfectedList;
-                }
-            }
-            public boolean isInfected(Node child)
-            {
-                //pake rumus yang S, buat masukin ke list Infected
-            }
-
-            public void addInfected(Infection city)
-            {
-                InfectedList.Add(city);
-            }
-            List<Infection> InfectedList = new List<Infection>();
-            public void setTimeInfected(int time)
-            {
-                this.timeInfected = time;
             }
         }
         public class BFSAlgorithm
@@ -44,28 +24,40 @@ namespace BreadthFirst
             {
                 this.timeLimit = time;
                 this.root = root;
-                this.BFSQ.Enqueue(root);
+                this.BFSQ.Enqueue(Infected(0,root));
             }
-            public boolean isExist(Node q) //if q exist in queue
+            public boolean isExistQ(Node q) //if q exist in queue
             {
-
+                //
             }
-            Queue<Node> BFSQ = new Queue<Node>(); //bfs queue
-            public boolean isInfected(Node parent, Node child);
+            public boolean isExistL(Node q) //if q exist in list
+            {
+                //
+            }
+            Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
+            public List<Node> InfectedList = new List<Node>(); 
+            public boolean isInfected(Node parent, Node child){
+                //
+            }
             public void checkInfection()
             {
                 while(BFSQ.Count > 0){
-                    Node current = BFSQ.Peek();
-                    foreach (Link child in current.NodesList)
+                    Infected current = BFSQ.Peek();
+                    foreach (Link child in current.city.NodesList)
                     {
-                        if(isInfected(current,child)){
+                        if(isInfected(current.city,child)){
+                            //cari waktu masuknya (T(child))
+
                             //masukin ke list infected
+                            if(!isExistL(child)){
+                                InfectedList.Add(child);
+                            }
                             if(!isExist(child)){
-                                BFSQ.Enqueue(child);
+                                BFSQ.Enqueue(Infected(t,child));
                             }
                         }
-                        BFSQ.Dequeue();
                     }
+                    BFSQ.Dequeue();
                 }
             }
 
