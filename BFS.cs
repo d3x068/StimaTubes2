@@ -6,8 +6,18 @@ using Graph;
 
 namespace BreadthFirst
 {
-    class Program
-    {
+        public delegate double function(int population, int time);
+
+        class InfectedFunction {
+            public static double LinearFunc(int population, int time) {
+                return ((double)population*time)/20;
+            }
+
+            public static double LogisticFunc(int population, int time) {
+                return ((double)population)/(1 + (population - 1)*Math.Exp((-1)*0.25*time));
+            }
+        }
+    
         public class Infected
         {
             public int time;
@@ -17,14 +27,15 @@ namespace BreadthFirst
                 this.time = time;
                 this.city = city;
             }
-            public int timeInfected(float prob){
+            public int timeInfected(float prob, function f){
                 // mencari waktu terinfeksinya anak dari yang terinfeksi
                 int t = 1;
-                double I = ((double)this.city.Populasi)/(1 + (this.city.Populasi - 1)*Math.Exp((-1)*0.25*t));
+                double I = f(this.city.Populasi, t);
+                //double I = ((double)this.city.Populasi)/(1 + (this.city.Populasi - 1)*Math.Exp((-1)*0.25*t));
                 double S = I*prob;
                 while (S <= 1) {
                     t++;
-                    I = ((double)this.city.Populasi)/(1 + (this.city.Populasi - 1)*Math.Exp((-1)*0.25*t));
+                    I = f(this.city.Populasi, t);
                     S = I*prob;
                 }
 
@@ -63,9 +74,9 @@ namespace BreadthFirst
             }
             Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
             public List<Node> InfectedList = new List<Node>(); 
-            public bool isInfected(Infected parent, float prob){
+            public bool isInfected(Infected parent, float prob, function f){
                 if (this.timeLimit != parent.time) {
-                    double I = ((double)parent.city.Populasi)/(1 + (parent.city.Populasi - 1)*Math.Exp((-1)*0.25*(this.timeLimit - parent.time)));
+                    double I = f(parent.city.Populasi, this.timeLimit - parent.time);
                     double S = I*prob;
                     return S > 1;
                 } else {
@@ -78,10 +89,10 @@ namespace BreadthFirst
                     Infected current = BFSQ.Peek();
                     foreach (Link child in current.city.NodesList)
                     {
-                        if(isInfected(current, child.prob)){
+                        if(isInfected(current, child.prob, InfectedFunction.LogisticFunc)){
                             Node infect = g.FindNode(child.id);
                             //cari waktu masuknya (T(child))
-                            int t = current.timeInfected(child.prob);
+                            int t = current.timeInfected(child.prob, InfectedFunction.LogisticFunc);
                             //masukin ke list infected
                             if(!isExistL(infect)){
                                 InfectedList.Add(infect);
@@ -103,5 +114,14 @@ namespace BreadthFirst
             }
 
         }
-    }
+
+        class Program {
+            static void Main() {
+                DirectedGraph g = new DirectedGraph();
+                g.LoadGraph("node.txt", "link.txt");
+                BFSAlgorithm bfs = new BFSAlgorithm(3, g.FindNode(g.id_root));
+                bfs.checkInfection(g);
+                bfs.PrintSolution();
+            }
+        }
 }

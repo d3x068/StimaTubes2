@@ -29,7 +29,7 @@ namespace Graph
             this.Populasi = Populasi;
         }
 
-        public boolean isEqual(Node n)
+        public bool isEqual(Node n)
         {
             if((n.Kota == this.Kota) && (n.Populasi == this.Populasi))
             {
@@ -108,25 +108,6 @@ namespace Graph
             }
 
             return null;
-        }
-    }
-
-    class Program {
-        static void Main(string[] args)
-        {
-            int N;
-            string Kota;
-            int Populasi;
-            Console.WriteLine("Masukan N : ");
-            N = Convert.ToInt32(Console.ReadLine());
-            List<Node> NodesList = new List<Node>();
-            Console.WriteLine("Masukan Kota dan Populasi");
-            for (int i = 0;i<N;i++){
-                Kota = Console.ReadLine();
-                Populasi = Convert.ToInt32(Console.ReadLine());
-                Node Q = new Node(Kota,Populasi);
-                NodesList.Add(Q);
-            }
         }
     }
 }
