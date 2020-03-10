@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Graph
 {
-
     public class Link
     {
         public string id;
@@ -22,7 +21,7 @@ namespace Graph
     {
         public string Kota;
         public int Populasi;
-        public List<Link> LinksList = new List<Link>();
+        public List<Link> NodesList = new List<Link>();
 
         public Node(string Kota,int Populasi)
         {
@@ -73,7 +72,7 @@ namespace Graph
                     while(!found) {
                         if (this.ListOfNode[i].Kota == data[0]) {
                             found = true;
-                            this.ListOfNode[i].LinkList.Add(new Link(data[1], float.Parse(data[2])));
+                            this.ListOfNode[i].NodesList.Add(new Link(data[1], float.Parse(data[2])));
                         } else {
                             i++;
                         }
@@ -86,10 +85,20 @@ namespace Graph
             Console.WriteLine("Root Node : {0}", id_root);
             foreach (Node node in ListOfNode) {
                 Console.WriteLine("Node : {0}, Population : {1}", node.Kota, node.Populasi);
-                foreach (Link link in node.LinkList) {
+                foreach (Link link in node.NodesList) {
                     Console.WriteLine("{0}, {1}", link.id, link.prob);
                 }
             }
+        }
+
+        public Node FindNode(string id) {
+            foreach (Node n in ListOfNode) {
+                if (n.Kota == id) {
+                    return n;
+                }
+            }
+
+            return null;
         }
     }
 
