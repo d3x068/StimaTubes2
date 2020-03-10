@@ -28,11 +28,21 @@ namespace BreadthFirst
             }
             public boolean isExistQ(Node q) //if q exist in queue
             {
-                //
+                Queue<Infected> qcopy = new Queue<Infected>(this.BFSQ.ToArray());
+                while (qcopy.Count > 0)
+                {
+                    if(q.isEqual((qcopy.Peek()).city)){
+                        return true;}
+                    qcopy.Dequeue();
+                }
+                return false;
             }
             public boolean isExistL(Node q) //if q exist in list
             {
-                //
+                if(this.InfectedList.Contains(q)){
+                    return true;
+                }
+                return false;
             }
             Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
             public List<Node> InfectedList = new List<Node>(); 
@@ -52,7 +62,7 @@ namespace BreadthFirst
                             if(!isExistL(child)){
                                 InfectedList.Add(child);
                             }
-                            if(!isExist(child)){
+                            if(!isExistQ(child)){
                                 BFSQ.Enqueue(Infected(t,child));
                             }
                         }
