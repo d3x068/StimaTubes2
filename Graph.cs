@@ -39,13 +39,13 @@ namespace Graph
         }
     }
 
-    public class Graph
+    public class DirectedGraph
     {
         public int numOfNode;
         public int numOfLink;
         public string id_root;
         List<Node> ListOfNode = new List<Node>();
-        public Graph()
+        public DirectedGraph()
         {
         
         }

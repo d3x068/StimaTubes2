@@ -19,17 +19,20 @@ namespace BreadthFirst
             }
             public int timeInfected(Node child){
                 // mencari waktu terinfeksinya anak dari yang terinfeksi
+
             }
         }
         public class BFSAlgorithm
         {
+            int timeLimit;
+            Node root;
             public BFSAlgorithm(int time, Node root) //default constructor
             {
                 this.timeLimit = time;
                 this.root = root;
                 this.BFSQ.Enqueue(Infected(0,root));
             }
-            public boolean isExistQ(Node q) //if q exist in queue
+            public bool isExistQ(Node q) //if q exist in queue
             {
                 Queue<Infected> qcopy = new Queue<Infected>(this.BFSQ.ToArray());
                 while (qcopy.Count > 0)
@@ -40,7 +43,7 @@ namespace BreadthFirst
                 }
                 return false;
             }
-            public boolean isExistL(Node q) //if q exist in list
+            public bool isExistL(Node q) //if q exist in list
             {
                 if(this.InfectedList.Contains(q)){
                     return true;
@@ -49,21 +52,24 @@ namespace BreadthFirst
             }
             Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
             public List<Node> InfectedList = new List<Node>(); 
-            public boolean isInfected(Node parent, Node child){
-                //
+            public bool isInfected(Infected parent, float prob){
+                double I = ((double)parent.city.Populasi)/(1 + (parent.city.Populasi - 1)*Math.Exp((-1)*0.25*(this.timeLimit - parent.time)));
+                double S = I*prob;
+                return S > 1;
             }
-            public void checkInfection()
+            public void checkInfection(DirectedGraph g)
             {
                 while(BFSQ.Count > 0){
                     Infected current = BFSQ.Peek();
                     foreach (Link child in current.city.NodesList)
                     {
-                        if(isInfected(current.city,child)){
+                        if(isInfected(current, child.prob)){
                             //cari waktu masuknya (T(child))
                             t = current.timeInfected(child);
                             //masukin ke list infected
-                            if(!isExistL(child)){
-                                InfectedList.Add(child);
+                            Node infect = g.FindNode(child.id);
+                            if(!isExistL(infect)){
+                                InfectedList.Add(infect);
                             }
                             if(!isExistQ(child)){
                                 BFSQ.Enqueue(Infected(t,child));
