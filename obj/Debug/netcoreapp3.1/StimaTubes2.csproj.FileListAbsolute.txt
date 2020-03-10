@@ -1,0 +1,3 @@
+C:\Users\hasna\Desktop\Stima\tubes2stima\StimaTubes2\obj\Debug\netcoreapp3.1\StimaTubes2.csprojAssemblyReference.cache
+C:\Users\hasna\Desktop\Stima\tubes2stima\StimaTubes2\obj\Debug\netcoreapp3.1\StimaTubes2.AssemblyInfoInputs.cache
+C:\Users\hasna\Desktop\Stima\tubes2stima\StimaTubes2\obj\Debug\netcoreapp3.1\StimaTubes2.AssemblyInfo.cs

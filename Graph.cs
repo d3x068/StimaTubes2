@@ -30,7 +30,7 @@ namespace Graph
             this.Populasi = Populasi;
         }
 
-        public boolean isEqual(Node n)
+        public bool isEqual(Node n)
         {
             if((n.Kota == this.Kota) && (n.Populasi == this.Populasi))
             {
@@ -82,7 +82,7 @@ namespace Graph
                     while(!found) {
                         if (this.ListOfNode[i].Kota == data[0]) {
                             found = true;
-                            this.ListOfNode[i].LinkList.Add(new Link(data[1], float.Parse(data[2])));
+                            this.ListOfNode[i].NodesList.Add(new Link(data[1], float.Parse(data[2])));
                         } else {
                             i++;
                         }
@@ -95,28 +95,9 @@ namespace Graph
             Console.WriteLine("Root Node : {0}", id_root);
             foreach (Node node in ListOfNode) {
                 Console.WriteLine("Node : {0}, Population : {1}", node.Kota, node.Populasi);
-                foreach (Link link in node.LinkList) {
+                foreach (Link link in node.NodesList) {
                     Console.WriteLine("{0}, {1}", link.id, link.prob);
                 }
-            }
-        }
-    }
-
-    class Program {
-        static void Main(string[] args)
-        {
-            int N;
-            string Kota;
-            int Populasi;
-            Console.WriteLine("Masukan N : ");
-            N = Convert.ToInt32(Console.ReadLine());
-            List<Node> NodesList = new List<Node>();
-            Console.WriteLine("Masukan Kota dan Populasi");
-            for (int i = 0;i<N;i++){
-                Kota = Console.ReadLine();
-                Populasi = Convert.ToInt32(Console.ReadLine());
-                Node Q = new Node(Kota,Populasi);
-                NodesList.Add(Q);
             }
         }
     }

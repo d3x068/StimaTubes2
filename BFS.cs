@@ -6,8 +6,6 @@ using Graph;
 
 namespace BreadthFirst
 {
-    class Program
-    {
         public class Infected
         {
             public int time;
@@ -17,7 +15,7 @@ namespace BreadthFirst
                 this.time = time;
                 this.city = city;
             }
-            public int timeInfected(Node child){
+            public int timeInfected(Node child, int time){
                 // mencari waktu terinfeksinya anak dari yang terinfeksi
             }
         }
@@ -29,7 +27,7 @@ namespace BreadthFirst
                 this.root = root;
                 this.BFSQ.Enqueue(Infected(0,root));
             }
-            public boolean isExistQ(Node q) //if q exist in queue
+            public bool isExistQ(Node q) //if q exist in queue
             {
                 Queue<Infected> qcopy = new Queue<Infected>(this.BFSQ.ToArray());
                 while (qcopy.Count > 0)
@@ -40,16 +38,20 @@ namespace BreadthFirst
                 }
                 return false;
             }
-            public boolean isExistL(Node q) //if q exist in list
+            public bool isExistL(Node q) //if q exist in list
             {
                 if(this.InfectedList.Contains(q)){
                     return true;
                 }
                 return false;
             }
+            public double fungsiLogistik(int populasi, int waktu)
+            {
+                return (populasi)/(1+(populasi-1)*Math.Exp(-0.25*waktu));
+            }
             Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
             public List<Node> InfectedList = new List<Node>(); 
-            public boolean isInfected(Node parent, Node child){
+            public bool isInfected(Node parent, Node child){
                 //
             }
             public void checkInfection()
@@ -58,6 +60,7 @@ namespace BreadthFirst
                     Infected current = BFSQ.Peek();
                     foreach (Link child in current.city.NodesList)
                     {
+
                         if(isInfected(current.city,child)){
                             //cari waktu masuknya (T(child))
                             t = current.timeInfected(child);
@@ -75,5 +78,10 @@ namespace BreadthFirst
             }
 
         }
-    }
+
+        class Program {
+            static void Main() {
+                Console.WriteLine("Test");
+            }
+        }
 }
