@@ -28,6 +28,15 @@ namespace Graph
             this.Kota = Kota;
             this.Populasi = Populasi;
         }
+
+        public boolean isEqual(Node n)
+        {
+            if((n.Kota == this.Kota) && (n.Populasi == this.Populasi))
+            {
+                return true;
+            }
+            else{return false;}
+        }
     }
 
     public class Graph
