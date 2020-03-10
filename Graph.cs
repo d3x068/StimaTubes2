@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Graph
 {
-
     public class Link
     {
         public string id;
@@ -22,7 +21,7 @@ namespace Graph
     {
         public string Kota;
         public int Populasi;
-        public List<Link> LinksList = new List<Link>();
+        public List<Link> NodesList = new List<Link>();
 
         public Node(string Kota,int Populasi)
         {
@@ -40,13 +39,13 @@ namespace Graph
         }
     }
 
-    public class Graph
+    public class DirectedGraph
     {
         public int numOfNode;
         public int numOfLink;
         public string id_root;
         List<Node> ListOfNode = new List<Node>();
-        public Graph()
+        public DirectedGraph()
         {
         
         }
@@ -99,6 +98,16 @@ namespace Graph
                     Console.WriteLine("{0}, {1}", link.id, link.prob);
                 }
             }
+        }
+
+        public Node FindNode(string id) {
+            foreach (Node n in ListOfNode) {
+                if (n.Kota == id) {
+                    return n;
+                }
+            }
+
+            return null;
         }
     }
 }
