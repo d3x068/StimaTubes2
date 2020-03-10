@@ -17,6 +17,9 @@ namespace BreadthFirst
                 this.time = time;
                 this.city = city;
             }
+            public int timeInfected(Node child){
+                // mencari waktu terinfeksinya anak dari yang terinfeksi
+            }
         }
         public class BFSAlgorithm
         {
@@ -57,7 +60,7 @@ namespace BreadthFirst
                     {
                         if(isInfected(current.city,child)){
                             //cari waktu masuknya (T(child))
-
+                            t = current.timeInfected(child);
                             //masukin ke list infected
                             if(!isExistL(child)){
                                 InfectedList.Add(child);
