@@ -17,8 +17,18 @@ namespace BreadthFirst
                 this.time = time;
                 this.city = city;
             }
-            public int timeInfected(Node child){
+            public int timeInfected(float prob){
                 // mencari waktu terinfeksinya anak dari yang terinfeksi
+                int t = 1;
+                double I = ((double)this.city.Populasi)/(1 + (this.city.Populasi - 1)*Math.Exp((-1)*0.25*t));
+                double S = I*prob;
+                while (S <= 1) {
+                    t++;
+                    I = ((double)this.city.Populasi)/(1 + (this.city.Populasi - 1)*Math.Exp((-1)*0.25*t));
+                    S = I*prob;
+                }
+
+                return t + this.time;
 
             }
         }
@@ -30,7 +40,8 @@ namespace BreadthFirst
             {
                 this.timeLimit = time;
                 this.root = root;
-                this.BFSQ.Enqueue(Infected(0,root));
+                this.BFSQ.Enqueue(new Infected(0,root));
+                this.InfectedList.Add(root);
             }
             public bool isExistQ(Node q) //if q exist in queue
             {
@@ -53,9 +64,13 @@ namespace BreadthFirst
             Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
             public List<Node> InfectedList = new List<Node>(); 
             public bool isInfected(Infected parent, float prob){
-                double I = ((double)parent.city.Populasi)/(1 + (parent.city.Populasi - 1)*Math.Exp((-1)*0.25*(this.timeLimit - parent.time)));
-                double S = I*prob;
-                return S > 1;
+                if (this.timeLimit != parent.time) {
+                    double I = ((double)parent.city.Populasi)/(1 + (parent.city.Populasi - 1)*Math.Exp((-1)*0.25*(this.timeLimit - parent.time)));
+                    double S = I*prob;
+                    return S > 1;
+                } else {
+                    return false;
+                }
             }
             public void checkInfection(DirectedGraph g)
             {
@@ -64,19 +79,26 @@ namespace BreadthFirst
                     foreach (Link child in current.city.NodesList)
                     {
                         if(isInfected(current, child.prob)){
-                            //cari waktu masuknya (T(child))
-                            t = current.timeInfected(child);
-                            //masukin ke list infected
                             Node infect = g.FindNode(child.id);
+                            //cari waktu masuknya (T(child))
+                            int t = current.timeInfected(child.prob);
+                            //masukin ke list infected
                             if(!isExistL(infect)){
                                 InfectedList.Add(infect);
                             }
-                            if(!isExistQ(child)){
-                                BFSQ.Enqueue(Infected(t,child));
+                            if(!isExistQ(infect)){
+                                BFSQ.Enqueue(new Infected(t,infect));
                             }
                         }
                     }
                     BFSQ.Dequeue();
+                }
+            }
+
+            public void PrintSolution() {
+                Console.WriteLine("City Infected : ");
+                foreach(Node n in InfectedList) {
+                    Console.WriteLine("{0}", n.Kota);
                 }
             }
 
