@@ -140,5 +140,10 @@ namespace Graph_Visual
                 }
             }
         }
+
+        private void gViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
