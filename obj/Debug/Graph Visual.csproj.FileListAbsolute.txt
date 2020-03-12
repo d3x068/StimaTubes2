@@ -1,0 +1,15 @@
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Graph Visual.exe.config
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Graph Visual.exe
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Graph Visual.pdb
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.csprojAssemblyReference.cache
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph_Visual.Form1.resources
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph_Visual.Properties.Resources.resources
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.csproj.GenerateResource.cache
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.exe
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.pdb
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\AutomaticGraphLayout.dll
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\AutomaticGraphLayout.Drawing.dll
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
+D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Microsoft.Msagl.GraphViewerGdi.xml
+D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.csproj.CopyComplete
