@@ -1,7 +1,6 @@
 D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Graph Visual.exe.config
 D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Graph Visual.exe
 D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Graph Visual.pdb
-D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.csprojAssemblyReference.cache
 D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph_Visual.Form1.resources
 D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph_Visual.Properties.Resources.resources
 D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.csproj.GenerateResource.cache
@@ -13,3 +12,18 @@ D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
 D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
 D:\Kuliah\Stima\Tubes\Graph Visual\bin\Debug\Microsoft.Msagl.GraphViewerGdi.xml
 D:\Kuliah\Stima\Tubes\Graph Visual\obj\Debug\Graph Visual.csproj.CopyComplete
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\Graph Visual.exe.config
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\Graph Visual.exe
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\Graph Visual.pdb
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\AutomaticGraphLayout.dll
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\AutomaticGraphLayout.Drawing.dll
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
+C:\Users\hasna\Desktop\StimaTubes2\bin\Debug\Microsoft.Msagl.GraphViewerGdi.xml
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph Visual.csprojAssemblyReference.cache
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph_Visual.Form1.resources
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph_Visual.Properties.Resources.resources
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph Visual.csproj.GenerateResource.cache
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph Visual.csproj.CopyComplete
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph Visual.exe
+C:\Users\hasna\Desktop\StimaTubes2\obj\Debug\Graph Visual.pdb

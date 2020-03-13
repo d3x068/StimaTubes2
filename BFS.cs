@@ -67,25 +67,20 @@ namespace BreadthFirst
                 }
                 return false;
             }
-            public bool isExistL(int t, Node q) //if q exist in list
+            public int isExistL(int t, Node q) //if q exist in list
             {
-                if (this.InfectedList.ContainsKey(t))
+                foreach (KeyValuePair<int, List<Node>> dict in InfectedList)
                 {
-                    foreach(KeyValuePair<int, List<Node>> dict in InfectedList)
+                    if (dict.Value.Contains(q))
                     {
-                        if (dict.Value.Contains(q))
-                        {
-                            return true;
-                        }
+                        return dict.Key;
                     }
-                    return false;
-                } 
-                else
-                {
-                    List<Node> day = new List<Node>();
-                    InfectedList.Add(t, day);
-                    return false;
                 }
+                if (!this.InfectedList.ContainsKey(t))
+                {
+                    this.InfectedList.Add(t, new List<Node>());
+                }
+                return -1;
             }
             Queue<Infected> BFSQ = new Queue<Infected>(); //bfs queue
             public SortedDictionary<int, List<Node>> InfectedList = new SortedDictionary<int, List<Node>>(); 
@@ -108,12 +103,25 @@ namespace BreadthFirst
                             Node infect = g.FindNode(child.id);
                             //cari waktu masuknya (T(child))
                             int t = current.timeInfected(child.prob, InfectedFunction.LogisticFunc);
-                            //masukin ke list infected
-                            if(!isExistL(t, infect)){
+                        //masukin ke list infected
+                            int res = isExistL(t, infect);
+                            if(res == -1){
                                 InfectedList[t].Add(infect);
-                            }
-                            if(!isExistQ(infect)){
-                                BFSQ.Enqueue(new Infected(t,infect));
+                                BFSQ.Enqueue(new Infected(t, infect));
+                            } 
+                            else if (t < res)
+                            {
+                                InfectedList[res].Remove(infect);
+                                if (InfectedList[res].Count == 0)
+                                {
+                                    InfectedList.Remove(res);
+                                }
+                                if (!InfectedList.ContainsKey(t))
+                                {
+                                    this.InfectedList.Add(t, new List<Node>());
+                                }
+                                InfectedList[t].Add(infect);
+                                BFSQ.Enqueue(new Infected(t, infect));
                             }
                         }
                     }

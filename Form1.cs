@@ -39,6 +39,7 @@ namespace Graph_Visual
         {
             gViewer1.Graph = null;
             this.T = 0;
+            this.label8.Text = "Day : ";
             DirectedGraph dg = new DirectedGraph();
             label5.Text = "";
             label6.Text = "";
@@ -102,6 +103,11 @@ namespace Graph_Visual
                     //create the graph content
                     foreach (Graph.Node node in dg.ListOfNode)
                     {
+                        
+                        if (graph.FindNode(node.Kota) == null)
+                        {
+                            graph.AddNode(node.Kota);
+                        }
                         foreach (Graph.Link link in node.NodesList)
                         {
                             graph.AddEdge(node.Kota, link.id);
@@ -129,6 +135,7 @@ namespace Graph_Visual
                     }
                     //Thread.Sleep(1000);
                 }
+                this.label8.Text = "Day : " + Convert.ToString(time);
                 this.gViewer1.Graph = graph;
                 if (time < T)
                 {
@@ -139,6 +146,11 @@ namespace Graph_Visual
                     doneProcess = false;
                 }
             }
+        }
+
+        private void gViewer1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

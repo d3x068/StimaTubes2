@@ -1,0 +1,10 @@
+9
+Amerika Brunei 0,2
+Amerika Cina 0,005
+Brunei Cina 0,5
+Brunei Denmark 0,75
+Cina Denmark 0,1
+Denmark Etiopia 0,1
+Etiopia Amerika 0,5
+Etiopia Brunei 0,1
+Etiopia France 0,2
